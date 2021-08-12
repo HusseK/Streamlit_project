@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 #Custom files to ignore
 alabasterhusse.css
+*.ipynb
+Dossier YOLO/data/images/image_test#1.png
+Dossier YOLO/data/images/image_test#2.png

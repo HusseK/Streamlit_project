@@ -14,7 +14,7 @@ except:
 @st.cache(suppress_st_warning=True)
 def boundig_boxes_on_image(img):
     #cwd="C:\Users\hkeita\Documents\Projet Streamlit\Streamlit_project"
-    model_path ="C:/Users/hkeita/Documents/Projet Streamlit/Dossier YOLO/models/darknet"    #"..\Dossier YOLO\models\darknet\"
+    model_path ="Dossier YOLO/models/darknet"    #"..\Dossier YOLO\models\darknet\"
     label_path = os.path.join(model_path, "data", "coco.names")
     LABELS = open(label_path).read().strip().split("\n")
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), dtype="uint8")
@@ -203,9 +203,3 @@ def main():
         show_result.image(res)
 
 main()
-
-
-path_to_img = "C:/Users/hkeita/Documents/Projet Streamlit/Dossier YOLO/data/images/image_test#2.png"
-image = cv2.imread(path_to_img)
-boundig_boxes_on_image(image)
-
