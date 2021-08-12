@@ -1,2 +1,12 @@
-numpy==1.18.1
-opencv-python==4.1.0.25
+streamlit
+pandas
+matplotlib
+seaborn
+altair
+keras
+PIL
+os
+io
+sys
+numpy
+opencv-python
