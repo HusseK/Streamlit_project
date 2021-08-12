@@ -6,4 +6,4 @@ altair
 keras
 Pillow
 numpy
-opencv-python
+opencv-python-headless
