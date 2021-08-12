@@ -12,18 +12,18 @@ except:
     print("Il manque des modules.")
 
 @st.cache(suppress_st_warning=True)
-def boundig_boxes_on_image(img):
+def boundig_boxes_on_image(img,overlap_thr = 0.3):
     #cwd="C:\Users\hkeita\Documents\Projet Streamlit\Streamlit_project"
-    model_path ="Dossier YOLO/models/darknet"    #"..\Dossier YOLO\models\darknet\"
-    label_path = os.path.join(model_path, "data", "coco.names")
-    LABELS = open(label_path).read().strip().split("\n")
+    #model_path ="Dossier YOLO/models/darknet"    #"..\Dossier YOLO\models\darknet\"
+    #label_path = os.path.join(model_path, "data", "coco.names")
+    LABELS = open('coco.names').read().strip().split("\n")
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), dtype="uint8")
-    config_path = os.path.join(model_path, "cfg", "yolov3.cfg")
-    weights_path = os.path.join(model_path, "yolov3.weights")
+    #config_path = os.path.join(model_path, "cfg", "yolov3.cfg")
+    #weights_path = os.path.join(model_path, "yolov3.weights")
     (image_height, image_width) = img.shape[:2]
     blob = cv2.dnn.blobFromImage(img, 1 / 255.0, (416, 416),
                              swapRB=True, crop=False)
-    net = cv2.dnn.readNetFromDarknet(config_path, weights_path)
+    net = cv2.dnn.readNetFromDarknet('yolov3.cfg','yolov3.weights')
     layers_names = net.getLayerNames()
     yolo_layers_names = [layers_names[iLayer[0] - 1] for iLayer in net.getUnconnectedOutLayers()]
     net.setInput(blob)
@@ -58,7 +58,6 @@ def boundig_boxes_on_image(img):
                 boxes.append([x, y, int(width), int(height)])
                 confidences.append(float(confidence))
                 classIDs.append(classID)
-    overlap_thr = 0.3
 
     idxs = cv2.dnn.NMSBoxes(boxes, confidences, confidence_thr, overlap_thr)
     if isinstance( idxs,tuple):
