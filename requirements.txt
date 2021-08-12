@@ -5,8 +5,6 @@ seaborn
 altair
 keras
 Pillow
-os
 io
-sys
 numpy
 opencv-python
