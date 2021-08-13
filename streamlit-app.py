@@ -178,7 +178,7 @@ def main():
     ''')
     show_image=st.empty()
 
-    uploaded_file = st.file_uploader("Pick a file", type=['png','jpg','bmp','pgm','tiff'])
+    uploaded_file = st.file_uploader("Pick a file", type=['png','jpg','jpeg','bmp','pgm','tiff'])
 
     if not uploaded_file:
         show_image.info("Veuillez déposer une image s'il vous plait")
@@ -191,7 +191,7 @@ def main():
         show_image.image(uploaded_file)
 
     show_result=st.empty()
-    image = Image.open(uploaded_file)
+    image = Image.open(uploaded_file).convert("RGB")
     img_array = np.array(image)
     res=boundig_boxes_on_image(img_array)
     if isinstance(res, str):
