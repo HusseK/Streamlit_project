@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Author: Husseine Madany KEITA
+# @Date:   2021-08-11 13:45:39
+# @Last Modified by:   Husseine Madany Keita
+# @Last Modified Date: 2021-08-13 17:54:34
 try:
     import streamlit as st
     import streamlit.components.v1 as components
